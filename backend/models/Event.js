@@ -7,25 +7,25 @@ const timeSuggestionSchema = new mongoose.Schema({
 });
 
 const eventSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    location: String,
-    date: String,
-    cost: Number,
-    description: String,
-    rsvpDeadline: String,
-    maxParticipants: Number,
-    tags: [],
-    isPublic: { type: Boolean, default: true },
-    bannerImage: String, // For future image upload
-    itinerary: [{
-      day: String,
-      activities: [{
-        time: String,
-        activity: String,
-        location: String
-      }]
+  name: { type: String, required: true },
+  location: String,
+  date: String,
+  cost: Number,
+  description: String,
+  rsvpDeadline: String,
+  maxParticipants: Number,
+  tags: [],
+  isPublic: { type: Boolean, default: true },
+  bannerImage: String,
+  itinerary: [{
+    day: String,
+    activities: [{
+      time: String,
+      activity: String,
+      location: String
     }]
-  });
-   
+  }],
+  timeSuggestions: [timeSuggestionSchema] // Add this line
+});   
 
 module.exports = mongoose.model('Event', eventSchema);
